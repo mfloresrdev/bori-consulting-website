@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Window &amp; Door Estimator — Crossroads Digital</title>
+<meta name="description" content="Get an instant window and door replacement estimate. Try the Crossroads Digital Window & Door Estimator Agent.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Window & Door Estimator — Crossroads Digital">
+<meta property="og:description" content="Get an instant window and door replacement estimate. Try the Crossroads Digital Window & Door Estimator Agent.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Window & Door Estimator — Crossroads Digital">
+<meta name="twitter:description" content="Get an instant window and door replacement estimate. Try the Crossroads Digital Window & Door Estimator Agent.">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site">
+  <nav class="wrap nav">
+    <a href="index.html" class="logo">Crossroads Digital</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <div class="nav-links" id="navLinks">
+      <a href="build-my-website.html">Build My Website</a>
+      <a href="get-an-ai-agent.html">Get an AI Agent</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta">Book a call</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap" style="padding-bottom:1.5rem;">
+    <div class="tag">● Window &amp; Door Estimator</div>
+    <h1>Get a real quote in 60 seconds.</h1>
+    <p class="sub">Add each window or door you're replacing, pick material and size, and see an instant estimated range. This is a live demo of the same estimator we build and embed on client sites.</p>
+  </section>
+
+  <section class="section no-border wrap">
+    <div class="estimator-tool" id="estimator"></div>
+    <p class="note">This is a planning estimate, not a final price — it doesn't account for site conditions, permits, or structural changes. A real quote is confirmed after a short call. <a href="contact.html">Book a consultation →</a></p>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <div class="kicker">Want this on your own site?</div>
+      <h2>Every estimator is built the same way</h2>
+      <p class="lede">A pluggable pricing-rules engine, not one-off code — your item types, materials, sizes, and prices live in a config we build around your actual business, so quotes stay accurate as your pricing changes.</p>
+    </div>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Window &amp; Door Estimator Agent</h3>
+        <p>Configured to your pricing rules, embedded directly on your site.</p>
+        <div class="price">$500–1,500 + $50–100/mo</div>
+      </div>
+      <div class="card coming-soon">
+        <span class="badge">Coming soon</span>
+        <h3>Estimator Agent (general)</h3>
+        <p>The same engine, reconfigured for landscaping, cleaning, and other trades.</p>
+        <div class="price">$500–1,500 + $50–100/mo</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="cta-band">
+      <h2>Ready to add this to your site?</h2>
+      <p>Book a free consultation and we'll scope your estimator together.</p>
+      <div class="btn-row">
+        <a href="contact.html" class="btn">Book a call →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Crossroads Digital</h4>
+        <p class="muted" style="max-width:26rem; font-size:0.92rem;">Websites and AI agents for small businesses that don't have either yet. Based in Indiana, open to remote work.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="build-my-website.html">Build My Website</a></li>
+          <li><a href="get-an-ai-agent.html">Get an AI Agent</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Crossroads Digital · Indiana, USA</span>
+      <span>317-695-3403</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script src="js/estimator-engine.js"></script>
+<script src="js/estimators/window-door.config.js"></script>
+<script src="js/estimator-ui.js"></script>
+<script>
+  EstimatorUI.mount('estimator', window.WINDOW_DOOR_ESTIMATOR_CONFIG);
+</script>
+</body>
+</html>

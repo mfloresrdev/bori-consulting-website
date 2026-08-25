@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Placeholder domain (example.com) — replace every loc with the real domain once it's chosen and live. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/index.html</loc></url>
+  <url><loc>https://example.com/build-my-website.html</loc></url>
+  <url><loc>https://example.com/get-an-ai-agent.html</loc></url>
+  <url><loc>https://example.com/estimator-window-door.html</loc></url>
+  <url><loc>https://example.com/pricing.html</loc></url>
+  <url><loc>https://example.com/portfolio.html</loc></url>
+  <url><loc>https://example.com/blog.html</loc></url>
+  <url><loc>https://example.com/about.html</loc></url>
+  <url><loc>https://example.com/contact.html</loc></url>
+</urlset>
