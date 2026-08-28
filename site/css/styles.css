@@ -400,6 +400,14 @@ footer.site {
   gap: 2rem;
 }
 @media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; } }
+.footer-motto {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.6rem;
+}
 footer.site h4 {
   font-family: var(--font-mono);
   font-size: 0.72rem;
