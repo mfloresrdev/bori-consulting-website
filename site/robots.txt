@@ -1,5 +1,4 @@
-# Update the Sitemap URL below once the final domain is live.
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://boriconsulting.com/sitemap.xml

@@ -1,4 +1,4 @@
-/* Crossroads Digital — shared design system
+/* BORI Consulting — shared design system
    Palette, type, and pattern lifted directly from the launch plan. */
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
@@ -12,7 +12,7 @@
   --border-soft: #263329;
   --text: #edf2ed;
   --text-muted: #9fb2a4;
-  --text-faint: #6d8175;
+  --text-faint: #8ca396; /* brightened from #6d8175 — the original failed WCAG AA (4.5:1) for body text against --surface and lighter; this passes ~5.3:1+ on every background it's used against. */
   --accent: #6cc492;
   --accent-strong: #9be6ba;
   --amber: #e3a857;
@@ -561,3 +561,32 @@ footer.site a:hover { color: var(--text); }
   color: var(--accent-strong);
   font-size: 1.3rem;
 }
+
+/* ---------- Legal documents ---------- */
+.legal-notice {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  background: var(--amber-soft);
+  border: 1px solid rgba(227, 168, 87, 0.35);
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 2.5rem;
+}
+.legal-notice .mark {
+  font-family: var(--font-mono);
+  color: var(--amber);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.legal-notice p { margin: 0; color: var(--text); font-size: 0.92rem; }
+.legal-notice p + p { margin-top: 0.5rem; }
+
+.legal-doc { max-width: 42rem; }
+.legal-doc h2 { font-size: 1.3rem; margin-top: 2.25rem; }
+.legal-doc h2:first-of-type { margin-top: 0; }
+.legal-doc p, .legal-doc li { color: var(--text-muted); font-size: 0.97rem; }
+.legal-doc ul { padding-left: 1.25rem; margin: 0 0 1rem; }
+.legal-doc li { margin-bottom: 0.4rem; }
+.legal-doc strong { color: var(--text); }
+.legal-updated { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-faint); margin-bottom: 2rem; }

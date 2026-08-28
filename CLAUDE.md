@@ -6,12 +6,12 @@ Guidance for any Claude (or other AI coding agent) session working in this repos
 
 ## Project scope
 
-**Crossroads Digital** (working name — update once finalized) builds websites and AI agents for small businesses that don't have either yet, starting in Indiana and starting with a small portfolio before scaling niches. The company is a solo operation run by a software developer/entrepreneur, so code quality and security have to hold up without a team behind them.
+**BORI Consulting** (`boriconsulting.com` — name finalized, domain owned) builds websites and AI agents for small businesses that don't have either yet, starting in Indiana and starting with a small portfolio before scaling niches. The company is a solo operation run by a software developer/entrepreneur, so code quality and security have to hold up without a team behind them.
 
 ### What this codebase delivers
 
 - **Marketing site** — homepage splitting into two paths: "Build My Website" (niche picker: food truck, contractor, more later) and "Get an AI Agent" (niche picker: Window & Door Estimator, Messaging Agent, general Estimator Agent). Service pages, portfolio/gallery, testimonials, blog.
-- **Booking** — an embedded scheduler (Calendly/Cal.com or equivalent) synced two-way with the owner's Outlook.com calendar. Do not build a custom calendar/availability engine unless the embedded option is explicitly abandoned — see the launch plan's rationale.
+- **Booking** — an embedded scheduler (Calendly/Cal.com or equivalent) synced two-way with the business Microsoft 365 calendar on `boriconsulting.com`. Do not build a custom calendar/availability engine unless the embedded option is explicitly abandoned — see the launch plan's rationale.
 - **Payments** — Stripe Checkout/Elements for deposit-or-full payment at time of booking. See Security Requirements below before touching any payment code.
 - **Flagship package: food truck ordering + AI agent** — an ordering site with Stripe/Apple Pay/Google Pay checkout, an AI messaging agent across Instagram, WhatsApp, and Facebook Messenger (FAQ/hours/location/specials), order-delivery integration, and a traffic/revenue dashboard.
 - **Estimator agents** — interactive quote calculators (Window & Door Estimator now, general Estimator Agent for other trades later). Build this as a pluggable pricing-rules engine, not one-off per-client code — see SOLID section.
@@ -22,19 +22,34 @@ Full business context, pricing, registration steps, and the visual/brand directi
 
 ## Tech stack
 
-**Decision (2026-08-23):** the marketing site (homepage, niche-picker pages, pricing, portfolio, about, contact) is built as static HTML/CSS/JS in [`site/`](site/) — no framework, no build step. This was the fastest path to a real, viewable deliverable while the business name, domain, Stripe/Calendly/Outlook accounts, and INBiz registration are still unresolved (see interview-notes.md "Still to gather"). It deliberately does **not** yet implement booking, payments, the client portal, or the messaging agent — those need real third-party accounts first and are marked "coming soon" in the UI rather than faked. When those are ready, either extend this static site with an API layer or migrate it into the Next.js app described below — that decision isn't made yet either.
+**Current state (2026-08-28):** the marketing site (homepage, niche-picker pages, pricing, portfolio, blog, about, contact, and the two draft legal pages) is live as static HTML/CSS/JS in [`site/`](site/) — no framework, no build step. This was the fastest path to a real, viewable deliverable while Stripe, Calendly/Cal.com, Microsoft 365 + Entra ID, and Meta Business Manager accounts are still being set up per the launch plan's week-by-week timeline. It deliberately does not implement booking, payments, the client portal, or the messaging agent — those need the real accounts below before they can be built for real, per this file's own definition of done. The stack below is the target for those pieces once the accounts exist; whether they get added as an API layer around the existing static site or as a full migration to Next.js is not decided yet.
 
-Beyond the static marketing site, no further stack is locked in. Suggested defaults, adjust freely and update this section the moment a real decision is made — an out-of-date CLAUDE.md is worse than none:
+Suggested defaults for that future work, adjust freely and update this section the moment a real decision is made — an out-of-date CLAUDE.md is worse than none:
 
 - **Framework**: Next.js (TypeScript) — one codebase for the marketing site, portal, and API routes/webhooks.
 - **Hosting**: Vercel or Netlify (per the launch plan).
 - **Database**: Postgres (e.g. via Supabase or Neon) for bookings, client portal accounts, estimate records.
 - **Payments**: Stripe (Checkout or Elements — never a custom card form).
-- **Calendar sync**: Microsoft Graph API (consumer/personal Outlook.com scopes, not the Business/Azure AD flow).
+- **Email & calendar**: Microsoft 365 Business Basic on `boriconsulting.com` (~$7/user/mo, annual commitment).
+- **Calendar sync**: Microsoft Graph API via **Entra ID (formerly Azure AD)** — the work/school account flow, *not* the consumer Outlook.com flow. See the Entra ID section below before writing any calendar code.
 - **Messaging**: Meta's Graph API for Instagram/WhatsApp/Messenger, behind a single internal messaging abstraction (see SOLID).
 - **Scheduler**: Calendly or Cal.com, embedded, connected to Outlook via its native integration where possible.
 
 Whatever is chosen, keep it boring and well-documented — this is a one-person team; exotic tooling is a liability, not a flex.
+
+## Microsoft Graph via Entra ID — calendar integration
+
+The business runs on Microsoft 365 Business Basic, so calendar access goes through a **work/school account**, not a personal Microsoft account. This changes the auth flow, the app registration, and the consent model compared to the consumer path. Get this right before writing calendar code.
+
+- **App registration** happens in the Microsoft Entra admin center under App registrations, inside the `boriconsulting.com` tenant. Record the Application (client) ID, Directory (tenant) ID, and a client secret. Store all three in environment variables — never in source.
+- **Single-tenant** is the correct setting. Only accounts in the BORI Consulting tenant need access; do not register as multi-tenant "just in case."
+- **Delegated vs application permissions:** for a scheduler acting on the owner's behalf, delegated (`Calendars.ReadWrite`) is usually right. Application permissions grant tenant-wide mailbox access and are overkill for a one-person calendar — pick the narrower one and document why.
+- **Admin consent** is granted by the owner as tenant admin, in the Entra portal. This is a one-time action, not something to script.
+- **Token handling:** access tokens are short-lived; use the refresh token flow via MSAL (`@azure/msal-node`) rather than hand-rolling token refresh. Store refresh tokens encrypted, never in plaintext columns (see A04).
+- **Prefer the scheduler's native integration.** Calendly and Cal.com both connect to Microsoft 365 work accounts directly. If that covers the booking flow, do not write custom Graph code at all — a direct Graph integration is only justified if the embedded scheduler proves insufficient.
+- **Secrets expire.** Entra client secrets have an expiry date (24 months max). Calendar the renewal at registration time; a silently expired secret breaks booking sync with no warning (see A09 — fail loudly).
+
+Note that the business `michaelflores@boriconsulting.com` account and any personal Outlook.com account are separate identities — the same address cannot exist in both. Do not assume a single sign-in covers both.
 
 ## Architecture — SOLID, applied to this project
 
@@ -112,7 +127,7 @@ This handles client payments and personal data — treat security as a requireme
 ### Secrets & configuration
 - All API keys, webhook secrets, and OAuth credentials live in environment variables, never in source. Add `.env*` (except `.env.example`) to `.gitignore` before the first commit.
 - Use separate keys for dev/staging/production; rotate immediately if a secret is ever exposed (committed, logged, pasted into a chat).
-- Request the minimum OAuth scopes needed from Microsoft Graph and Meta's Graph API — no broad "manage everything" permissions.
+- Request the minimum OAuth scopes needed from Microsoft Graph (Entra ID) and Meta's Graph API — no broad "manage everything" permissions.
 
 ### AI messaging agent — OWASP Top 10 for LLM Applications 2026
 The messaging agent (Instagram/WhatsApp/Messenger) is a distinct attack surface from the rest of the site. Design it assuming it will be prompted adversarially by real customers, not just used as intended.
