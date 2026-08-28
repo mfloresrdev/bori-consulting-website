@@ -148,6 +148,8 @@ header.site {
 }
 .nav-links a { color: var(--text-muted); }
 .nav-links a:hover, .nav-links a.active { color: var(--text); text-decoration: none; }
+.nav-links a:not(.nav-cta) { padding-bottom: 3px; border-bottom: 2px solid transparent; }
+.nav-links a.active:not(.nav-cta) { border-bottom-color: var(--accent); }
 .nav-cta {
   font-family: var(--font-mono);
   font-size: 0.82rem;
