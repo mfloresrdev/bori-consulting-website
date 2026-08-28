@@ -15,7 +15,7 @@
 |---|---|
 | Company name | **BORI Consulting** — locked |
 | Acronym | Build, Optimize, Run, Integrate |
-| Domain | **boriconsulting.com** — purchased at GoDaddy |
+| Domain | **boriconsulting.com** — purchased via Vercel Domains (DNS managed by Vercel, not GoDaddy) |
 | Business email | `michaelflores@boriconsulting.com` — Microsoft 365 Business Basic (pending setup) |
 | Aliases planned | `hello@` (contact page), `billing@` (invoices, Stripe receipts) |
 | Logo / brand assets | None yet |
@@ -131,8 +131,8 @@ Contrast needs explicit verification on the dark background — easy to get wron
 
 ### Week 1 — Aug 24–30 · Business foundation
 - [x] Pick final company name — **BORI Consulting**
-- [x] Confirm domain availability and purchase — **boriconsulting.com** at GoDaddy
-- [ ] Set up Microsoft 365 Business Basic, create `michaelflores@boriconsulting.com`, add MX records at GoDaddy
+- [x] Confirm domain availability and purchase — **boriconsulting.com** via Vercel Domains
+- [ ] Set up Microsoft 365 Business Basic, create `michaelflores@boriconsulting.com`, add MX/TXT records in Vercel's DNS records panel for the domain (not GoDaddy — Vercel is the DNS host)
 - [ ] Run INBiz business search for name conflicts
 - [ ] Create Access Indiana account
 - [ ] Decide entity type (sole prop vs LLC)
@@ -148,7 +148,7 @@ Contrast needs explicit verification on the dark background — easy to get wron
 - [ ] Calendly / Cal.com signup
 - [ ] Stripe signup
 - [ ] **Meta for Developers + Business Manager — start Instagram/WhatsApp/Messenger app review now; approval can take days to weeks**
-- [ ] GitHub repo + Vercel account; add boriconsulting.com in Vercel and point GoDaddy DNS at it (A record on `@`, CNAME on `www`)
+- [ ] GitHub repo + Vercel account; assign boriconsulting.com to the Vercel project (DNS is already on Vercel, so this is just a domain assignment in the project settings — no external A/CNAME records needed)
 - [ ] Register the app in the **Entra admin center** (single-tenant) and record client ID, tenant ID, and secret — only needed if custom Graph code turns out to be necessary
 
 ### Week 4 — Sep 14–20 · Brand & content

@@ -49,4 +49,4 @@ then open `http://localhost:8000/`. To view from another device on the same WiFi
 
 ## Deploying
 
-The repo root is a git repo; this site lives in `site/`. Push to GitHub and connect the repo to Vercel with **Root Directory** set to `site` (framework preset: Other / no build step). See the DNS section in the latest chat for the exact records to add at GoDaddy once the Vercel project exists.
+The repo root is a git repo; this site lives in `site/`. Push to GitHub and connect the repo to Vercel with **Root Directory** set to `site` (framework preset: Other / no build step). `boriconsulting.com` was purchased through Vercel Domains, so DNS is already hosted there — assigning the domain to the project in Vercel's dashboard is enough, no external registrar DNS records needed.
