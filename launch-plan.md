@@ -1,7 +1,7 @@
 # Company Launch Plan
 
-**Company:** BORI Consulting — *Build, Optimize, Run, Integrate*
-**Domain:** boriconsulting.com (owned)
+**Company:** AI ProServices — *Build, Optimize, Run, Integrate*
+**Domain:** aiproservicescorp.com (owned)
 **Owner:** Michael — solo software developer/entrepreneur
 **Service area:** Indiana, US — open to remote work in other states
 **Phone:** 317-695-3403
@@ -13,10 +13,10 @@
 
 | Item | Status |
 |---|---|
-| Company name | **BORI Consulting** — locked |
+| Company name | **AI ProServices** — locked |
 | Acronym | Build, Optimize, Run, Integrate |
-| Domain | **boriconsulting.com** — purchased via Vercel Domains (DNS managed by Vercel, not GoDaddy) |
-| Business email | `michaelflores@boriconsulting.com` — Microsoft 365 Business Basic (pending setup) |
+| Domain | **aiproservicescorp.com** — purchased via Vercel Domains (DNS managed by Vercel, not GoDaddy) |
+| Business email | `michaelflores@aiproservicescorp.com` — Microsoft 365 Business Basic (pending setup) |
 | Aliases planned | `hello@` (contact page), `billing@` (invoices, Stripe receipts) |
 | Logo / brand assets | None yet |
 | Portfolio material | One food truck project photo referenced; not yet successfully uploaded |
@@ -102,7 +102,7 @@ Contrast needs explicit verification on the dark background — easy to get wron
 - Testimonials, gallery, blog, project portfolio
 - **Booking:** embedded live scheduler (Calendly / Cal.com style) — *not* custom-built, for reliable Outlook sync and availability handling
 - **Client tracking:** simple calendar view; no separate CRM for now
-- **Calendar:** Microsoft 365 Business Basic on `boriconsulting.com` — calendar sync goes through **Entra ID (work account) Graph scopes**, not the consumer Outlook.com flow. Prefer Calendly/Cal.com's native Microsoft 365 integration over custom Graph code
+- **Calendar:** Microsoft 365 Business Basic on `aiproservicescorp.com` — calendar sync goes through **Entra ID (work account) Graph scopes**, not the consumer Outlook.com flow. Prefer Calendly/Cal.com's native Microsoft 365 integration over custom Graph code
 - **Payments:** Stripe; payment or deposit collected online at time of booking
 - **Build approach:** custom-built and owned outright, not a no-code platform. Needs hosting (Vercel/Netlify) plus backend for portal, estimator, and payments
 
@@ -113,14 +113,14 @@ Contrast needs explicit verification on the dark background — easy to get wron
 *Informational only; not legal or tax advice.*
 
 - [ ] Create an **Access Indiana** account first — this is the personal SSO login for INBiz (Michael the individual, not the company)
-- [ ] Run the INBiz business search for "BORI Consulting" to confirm no conflict
-- [ ] Decide sole proprietorship vs LLC — multi-member LLC expected once the partner joins (confirm with an accountant)
+- [ ] Run the INBiz business search for "AI ProServices" to confirm no conflict
+- [x] Entity type decided: **C-Corporation** (AI ProServices Corp.), not the LLC originally planned here — update: this section's filing details below are corrected for a corporation, verified against the Indiana Secretary of State's current forms (Aug 2026) rather than left as the stale LLC-specific steps
 - [ ] Optional: reserve name via INBiz — $10, holds 120 days
 - [ ] Designate registered agent — can be Michael personally with an Indiana address, but **the business cannot be its own agent**, and the agent address is public record. Commercial agent services run ~$50–150/yr if the home address should stay private
-- [ ] File Articles of Organization (Form 49459) via INBiz — **$100** (fee updated on the Jan 2026 revision of the form), ~24hr online processing
+- [ ] File **Articles of Incorporation for a Domestic Corporation (State Form 4159)** via INBiz — **$100**, ~24hr online processing. (This replaces the LLC's Form 49459 "Articles of Organization" originally planned here — a corporation files a different form.)
 - [ ] If working from home: check the remote-business box on the Articles and file State Form 9900382 alongside it, so the principal office address serves as a contact address
 - [ ] Get EIN — free, instant, at irs.gov
-- [ ] Enter `michaelflores@boriconsulting.com` as the business email on the filing — the state sends entity-report reminders and change notices there, which is the early warning for business identity theft
+- [ ] Enter `michaelflores@aiproservicescorp.com` as the business email on the filing — the state sends entity-report reminders and change notices there, which is the early warning for business identity theft
 - [ ] Open business bank account (after EIN)
 - [ ] Check local/industry licenses via INBiz
 - [ ] Calendar the Biennial Business Entity Report — every 2 years, in anniversary month
@@ -130,15 +130,15 @@ Contrast needs explicit verification on the dark background — easy to get wron
 ## 8. Nine-week launch timeline
 
 ### Week 1 — Aug 24–30 · Business foundation
-- [x] Pick final company name — **BORI Consulting**
-- [x] Confirm domain availability and purchase — **boriconsulting.com** via Vercel Domains
-- [ ] Set up Microsoft 365 Business Basic, create `michaelflores@boriconsulting.com`, add MX/TXT records in Vercel's DNS records panel for the domain (not GoDaddy — Vercel is the DNS host)
+- [x] Pick final company name — **AI ProServices**
+- [x] Confirm domain availability and purchase — **aiproservicescorp.com** via Vercel Domains
+- [ ] Set up Microsoft 365 Business Basic, create `michaelflores@aiproservicescorp.com`, add MX/TXT records in Vercel's DNS records panel for the domain (not GoDaddy — Vercel is the DNS host)
 - [ ] Run INBiz business search for name conflicts
 - [ ] Create Access Indiana account
-- [ ] Decide entity type (sole prop vs LLC)
+- [x] Decide entity type — **C-Corporation**
 
 ### Week 2 — Aug 31–Sep 6 · Legal & financial setup
-- [ ] File Articles of Organization on INBiz ($100), listing `michaelflores@boriconsulting.com` as the business email
+- [ ] File Articles of Incorporation (Form 4159) on INBiz ($100), listing `michaelflores@aiproservicescorp.com` as the business email
 - [ ] Get EIN at irs.gov
 - [ ] Open business bank account
 - [ ] Add `hello@` and `billing@` aliases
@@ -148,7 +148,7 @@ Contrast needs explicit verification on the dark background — easy to get wron
 - [ ] Calendly / Cal.com signup
 - [ ] Stripe signup
 - [ ] **Meta for Developers + Business Manager — start Instagram/WhatsApp/Messenger app review now; approval can take days to weeks**
-- [ ] GitHub repo + Vercel account; assign boriconsulting.com to the Vercel project (DNS is already on Vercel, so this is just a domain assignment in the project settings — no external A/CNAME records needed)
+- [ ] GitHub repo + Vercel account; assign aiproservicescorp.com to the Vercel project (DNS is already on Vercel, so this is just a domain assignment in the project settings — no external A/CNAME records needed)
 - [ ] Register the app in the **Entra admin center** (single-tenant) and record client ID, tenant ID, and secret — only needed if custom Graph code turns out to be necessary
 
 ### Week 4 — Sep 14–20 · Brand & content
@@ -192,7 +192,7 @@ Contrast needs explicit verification on the dark background — easy to get wron
 
 ## 9. Open items / next steps
 
-- [ ] Stand up `michaelflores@boriconsulting.com` and verify send/receive both directions
+- [ ] Stand up `michaelflores@aiproservicescorp.com` and verify send/receive both directions
 - [ ] Re-upload the food truck project photo and any other portfolio material
 - [ ] Confirm entity choice with an accountant, including the multi-member structure once the partner is identified
 - [ ] Draft an operating agreement covering ownership split, decision-making, and buyout terms
@@ -202,7 +202,7 @@ Contrast needs explicit verification on the dark background — easy to get wron
 
 ## 10. Critical path risks
 
-1. **Email is now the near-term bottleneck** — the INBiz filing should list the business address, so email setup gates the LLC filing, which gates the EIN, which gates the bank account.
+1. **Email is now the near-term bottleneck** — the INBiz filing should list the business address, so email setup gates the incorporation filing, which gates the EIN, which gates the bank account. This is also the likely root cause of the AADSTS90019 error seen when signing into Microsoft Bookings: Microsoft 365 for `aiproservicescorp.com` (step in Week 1, still unchecked above) needs to be fully set up and the domain verified via DNS before a real work-account sign-in exists to use Bookings with.
 2. **Meta app review is the long pole on the technical side** — started in Week 3 but not needed until Week 8. If it slips, the messaging agent slips with it. Start it early and treat any delay as a scheduling signal, not a surprise.
 3. **No portfolio assets yet** — the food truck photo is currently the only proof of past work referenced, and it hasn't been successfully attached anywhere.
 4. **Entra client secret expiry** — if custom Graph code is used, the secret expires within 24 months and booking sync breaks silently. Calendar the renewal at registration time.
