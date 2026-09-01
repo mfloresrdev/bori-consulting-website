@@ -17,7 +17,9 @@ site/
 ├── contact.html                 Phone CTA (booking/payments/email not wired up yet)
 ├── privacy-policy.html          DRAFT — pending attorney review, see below
 ├── terms-of-service.html        DRAFT — pending attorney review, see below
-├── favicon.svg                  Placeholder "B" mark — swap for a real logo when one exists
+├── favicon.svg                  Placeholder "A" mark — swap for a real logo when one exists
+├── vercel.json                  Security headers (CSP, HSTS, etc.) — must live here, inside site/,
+│                                 not the repo root, since Vercel's Root Directory is set to `site`
 ├── robots.txt / sitemap.xml     Point at aiproservicescorp.com; update if the domain ever changes
 ├── css/styles.css               Shared design system (palette, type, components)
 └── js/
@@ -49,4 +51,7 @@ then open `http://localhost:8000/`. To view from another device on the same WiFi
 
 ## Deploying
 
-The repo root is a git repo; this site lives in `site/`. Push to GitHub and connect the repo to Vercel with **Root Directory** set to `site` (framework preset: Other / no build step). `aiproservicescorp.com` was purchased through Vercel Domains, so DNS is already hosted there — assigning the domain to the project in Vercel's dashboard is enough, no external registrar DNS records needed.
+- **GitHub repo:** [`mfloresrdev/ai-proservices-corpwebsite`](https://github.com/mfloresrdev/ai-proservices-corpwebsite) — the repo root is a git repo; the actual site lives in `site/`.
+- **Vercel project:** `ai-proservices-corpwebsite`, connected to that repo with **Root Directory** set to `site` (framework preset: Other / no build step). Its default `*.vercel.app` URL follows the project name — currently `ai-proservices-corpwebsite.vercel.app`.
+- **Domains:** `aiproservicescorp.com` is the primary domain (purchased through Vercel Domains, so DNS is already hosted there — no external registrar records needed). `boriconsulting.com` is the retired former domain, also on Vercel DNS; whether it stays assigned as a redirect or gets fully detached is a standing decision, not yet made.
+- Both the GitHub repo and the Vercel project were renamed to match the current brand — if either one drifts from the other again, that's a sign to re-sync them.
